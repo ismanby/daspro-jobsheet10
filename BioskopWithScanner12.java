@@ -5,7 +5,7 @@ public class BioskopWithScanner12 {
         Scanner sc = new Scanner(System.in);
 
         int baris, kolom, menu;
-        String nama, next;
+        String nama, next = "null";
 
         String[][] penonton = new String[4][2];
 
@@ -14,7 +14,7 @@ public class BioskopWithScanner12 {
         System.out.println("Menu 3 :  Exit");
 
         while (true) {
-            System.out.print("Pilih menu (1/2/3): ");
+            System.out.print("\nPilih menu (1/2/3): ");
             menu = sc.nextInt();
 
             sc.nextLine();
@@ -24,12 +24,22 @@ public class BioskopWithScanner12 {
                     System.out.print("Masukkan nama: ");
                     nama = sc.nextLine();
 
-                    System.out.print("Masukkan baris: ");
-                    baris = sc.nextInt();
+                    while (true) {
+                        System.out.print("Masukkan baris: ");
+                        baris = sc.nextInt();
 
-                    System.out.print("Masukkan kolom: ");
-                    kolom = sc.nextInt();
-                    sc.nextLine(); 
+                        System.out.print("Masukkan kolom: ");
+                        kolom = sc.nextInt();
+                        
+                        sc.nextLine(); 
+
+                        if (baris <= 0 || baris > penonton.length || kolom <= 0 || kolom > penonton[0].length ) {
+                            System.out.println("Baris/kolom tidak valid, silahkan input ulang!");
+                            continue;
+                        }
+
+                        break;
+                    }
 
                     penonton[baris-1][kolom-1] = nama;
 
@@ -40,13 +50,16 @@ public class BioskopWithScanner12 {
                         break;
                     }
                 } while (next.equalsIgnoreCase("y"));
+
             } else if (menu == 2) {
                 for (int j = 0; j < penonton.length; j++) {
                     System.out.println("Penonton pada baris ke-" + (j+1) + ": " + String.join(", ", penonton[j]));
                 }
+
             } else if (menu == 3) {
                 System.out.println("Program berhenti. Terima kasih!");
                 break;
+
             } else {
                 System.out.println("Pilihan tidak valid! Silahkan pilih 1, 2 atau 3.");
             }
