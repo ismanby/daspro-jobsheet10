@@ -58,7 +58,20 @@ public class BioskopWithScanner12 {
 
             } else if (menu == 2) {
                 for (int j = 0; j < penonton.length; j++) {
-                    System.out.println("Penonton pada baris ke-" + (j+1) + ": " + String.join(", ", penonton[j]));
+                    System.out.print("Penonton pada baris ke-" + (j+1) + ": ");
+                    for (int k = 0; k < penonton[j].length; k++) {
+                        if (penonton[j][k] == null) {
+                            System.out.print("***");
+                        } else {
+                            System.out.print(penonton[j][k]);
+                        }
+
+                        if (k < penonton[j].length - 1) {
+                            System.out.print(", ");
+                        }
+                    }
+
+                    System.out.println();
                 }
 
             } else if (menu == 3) {
