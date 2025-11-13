@@ -38,6 +38,11 @@ public class BioskopWithScanner12 {
                             continue;
                         }
 
+                        if (penonton[baris-1][kolom-1] != null) {
+                            System.out.println("Kursi yang anda pilih sudah terisi oleh penonton lainnya. Silahkan pilih kursi yang lain");
+                            continue;
+                        }
+
                         break;
                     }
 
